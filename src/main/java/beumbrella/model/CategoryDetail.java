@@ -3,15 +3,19 @@ package beumbrella.model;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "category")
-public class Category {
+@Table(name = "category_detail")
+public class CategoryDetail {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String name;
 
-    public Category() {
+    @ManyToOne
+    @JoinColumn(name = "category_id")
+    private Category category;
+
+    public CategoryDetail() {
     }
 
     public Long getId() {
@@ -28,5 +32,13 @@ public class Category {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
     }
 }

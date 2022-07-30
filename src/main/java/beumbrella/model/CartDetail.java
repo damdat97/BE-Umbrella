@@ -6,6 +6,7 @@ import javax.persistence.*;
 @Table(name = "cart_detail")
 public class CartDetail {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private int quantity;

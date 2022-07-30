@@ -6,11 +6,25 @@ import javax.persistence.*;
 @Table(name = "images")
 public class Image {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String images;
 
+    @ManyToOne
+    @JoinColumn(name = "product_id")
+    private Product product;
+
+
     public Image() {
+    }
+
+    public Product getProduct() {
+        return product;
+    }
+
+    public void setProduct(Product product) {
+        this.product = product;
     }
 
     public Long getId() {

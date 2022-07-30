@@ -21,15 +21,18 @@ public class ProductController {
     public ResponseEntity<Iterable<Product>> findAll() {
         return new ResponseEntity<>(productService.findAll(), HttpStatus.OK);
     }
+
     @GetMapping("/{id}")
     public ResponseEntity<Optional<Product>> findById(@PathVariable long id) {
         return new ResponseEntity<>(productService.findById(id), HttpStatus.OK);
     }
+
     @PostMapping()
     public ResponseEntity<Iterable<Product>> add(@RequestBody Product product) {
         productService.save(product);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
+
     @PutMapping("/{id}")
     public ResponseEntity<Product> edit(@PathVariable long id, @RequestBody Product product) {
         Optional<Product> product1 = productService.findById(id);
@@ -40,9 +43,12 @@ public class ProductController {
         productService.save(product);
         return new ResponseEntity<>(product, HttpStatus.CREATED);
     }
+
     @DeleteMapping("/{id}")
     public ResponseEntity<Product> update(@PathVariable long id) {
         productService.remove(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
+
+
 }
