@@ -23,9 +23,6 @@ public class Product {
     @JoinColumn(name = "user_id")
     private User user;
 
-    @OneToMany
-    private Set<Image> images;
-
     public Product() {
     }
 
@@ -85,11 +82,4 @@ public class Product {
         this.user = user;
     }
 
-    public Set<Image> getImg() {
-        return images;
-    }
-
-    public void setImg(Set<Image> images) {
-        this.images = images;
-    }
 }
