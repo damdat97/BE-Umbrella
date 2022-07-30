@@ -50,5 +50,8 @@ public class ProductController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-
+    @GetMapping("/find-new-product")
+    public ResponseEntity<Iterable<Product>> findNewProduct() {
+        return new ResponseEntity<>(productService.findNewProduct(), HttpStatus.OK);
+    }
 }
