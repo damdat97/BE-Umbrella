@@ -35,4 +35,9 @@ public class ProductServiceImpl implements ProductService {
     public Iterable<Product> findNewProduct() {
         return productRepository.findNewProduct();
     }
+
+    @Override
+    public Iterable<Product> findAllByNameContaining(String name) {
+        return productRepository.findAllByNameContaining(name);
+    }
 }
