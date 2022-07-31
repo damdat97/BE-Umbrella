@@ -40,4 +40,9 @@ public class ProductServiceImpl implements ProductService {
     public Iterable<Product> findAllByNameContaining(String name) {
         return productRepository.findAllByNameContaining(name);
     }
+
+    @Override
+    public Iterable<Product> findAllByPriceBetween(int from, int to) {
+        return productRepository.findAllByPriceBetween(from,to);
+    }
 }
