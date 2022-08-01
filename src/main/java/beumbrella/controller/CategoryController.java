@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 
 @Controller
@@ -49,5 +50,13 @@ public class CategoryController {
     public ResponseEntity<Product> update(@PathVariable long id) {
         categoryService.remove(id);
         return new ResponseEntity<>(HttpStatus.OK);
+    }
+    @GetMapping("/find-by-name")
+    public ResponseEntity<Iterable<Category>>findAllByNameContaining(@RequestParam String name){
+        List<Category> categories = (List<Category>) categoryService.findAllByNameContaining(name);
+        if (categories.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity<>(categories, HttpStatus.OK);
     }
 }

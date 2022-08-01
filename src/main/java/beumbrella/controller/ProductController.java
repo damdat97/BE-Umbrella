@@ -71,4 +71,13 @@ public class ProductController {
         }
         return new ResponseEntity<>(products, HttpStatus.OK);
     }
+    @GetMapping("/find-by-userId")  // Tìm theo id User đăng nhập để ra số house đã đăng của id đó!
+    public ResponseEntity<Iterable<Product>> findHouseByUserId(@RequestParam(value = "user_id") Long user_id) {
+        List<Product>products = (List<Product>) productService.findByUserId(user_id);
+        if (products.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(products, HttpStatus.OK);
+    }
+
 }

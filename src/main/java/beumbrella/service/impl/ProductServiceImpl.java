@@ -45,4 +45,9 @@ public class ProductServiceImpl implements ProductService {
     public Iterable<Product> findAllByPriceBetween(int from, int to) {
         return productRepository.findAllByPriceBetween(from,to);
     }
+
+    @Override
+    public Iterable<Product> findByUserId(Long user_id) {
+        return productRepository.findByUserId(user_id);
+    }
 }

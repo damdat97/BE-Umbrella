@@ -1,6 +1,7 @@
 package beumbrella.service.impl;
 
 import beumbrella.model.Category;
+import beumbrella.model.Product;
 import beumbrella.repository.CategoryRepository;
 import beumbrella.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,5 +32,10 @@ public class CategoryServiceImpl implements CategoryService {
     @Override
     public void remove(Long id) {
     categoryRepository.deleteById(id);
+    }
+
+    @Override
+    public Iterable<Category> findAllByNameContaining(String name) {
+        return categoryRepository.findAllByNameContaining(name);
     }
 }
